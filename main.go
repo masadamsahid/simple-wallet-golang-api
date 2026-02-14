@@ -16,6 +16,7 @@ import (
 	"github.com/gofiber/fiber/v3"
 	"github.com/joho/godotenv"
 
+	scalargo "github.com/bdpiprava/scalar-go"
 	swagger "github.com/gofiber/contrib/v3/swaggerui"
 )
 
@@ -56,7 +57,7 @@ func main() {
 		return c.SendString("Hello, World!")
 	})
 
-	//
+	// Swagger
 	swaggerCfg := swagger.Config{
 		BasePath: "/", // swagger ui base path
 		FilePath: "./docs/openapi.yaml",
@@ -64,6 +65,23 @@ func main() {
 	}
 	app.Use(swagger.New(swaggerCfg))
 
+	// Scalar UI
+	html, err := scalargo.NewV2(
+		scalargo.WithSpecDir("./docs"),
+		scalargo.WithBaseFileName("openapi.yaml"),
+		scalargo.WithTheme(scalargo.ThemeBluePlanet),
+	)
+	if err != nil {
+		log.Println("Error Scalar-Go:", err)
+	}
+	// log.Println("HTML", html)
+	app.Get("/scalar", func(c fiber.Ctx) error {
+
+		c.Set(fiber.HeaderContentType, fiber.MIMETextHTML)
+		return c.SendString(html)
+	})
+
+	// APIs
 	api := app.Group("/api")
 
 	// /api/auth
