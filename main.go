@@ -42,7 +42,7 @@ func main() {
 	})
 	APP_PORT, err := strconv.Atoi(os.Getenv("APP_PORT"))
 	if err != nil {
-		APP_PORT = 3000
+		APP_PORT = 8080
 	}
 
 	helpers.InitJWT()
