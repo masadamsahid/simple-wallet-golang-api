@@ -30,7 +30,7 @@ func IsAuthenticated(c fiber.Ctx) error {
 		return errors.New("invalid or expired token")
 	}
 
-	log.Printf("%v", token.Claims)
+	// log.Printf("%v", token.Claims)
 
 	claims, ok := token.Claims.(*helpers.AuthTokenClaims)
 	if !ok {
@@ -39,7 +39,7 @@ func IsAuthenticated(c fiber.Ctx) error {
 		return errors.New("invalid token claims")
 	}
 
-	log.Println("Claims", claims)
+	// log.Println("Claims", claims)
 
 	c.Locals("user", claims)
 

@@ -38,7 +38,7 @@ func CreateAuthToken(claims AuthTokenClaims) (string, error) {
 	claims.Issuer = "mampuio-wallet-app"
 	claims.IssuedAt = jwt.NewNumericDate(issuedAt)
 	claims.ExpiresAt = jwt.NewNumericDate(issuedAt.Add(time.Hour * 24))
-	log.Println(jwtSecret)
+	// log.Println(jwtSecret)
 	tokenClaims := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 	// log.Println("Token claim", tokenClaims)
 
