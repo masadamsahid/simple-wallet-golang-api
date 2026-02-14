@@ -14,10 +14,9 @@ type AuthService struct {
 type IAuthService interface {
 	Register(params *model.User) (*dto.RegisterResponseData, error)
 	Login(params *dto.LoginRequest) (*dto.LoginResponseData, error)
-	FindByEmail(email string) (*model.User, error)
 }
 
-func NewUserService(userRepository repository.IUserRepository) IAuthService {
+func NewAuthService(userRepository repository.IUserRepository) IAuthService {
 	return &AuthService{userRepository: userRepository}
 }
 
@@ -43,6 +42,7 @@ func (a AuthService) Register(newUser *model.User) (*dto.RegisterResponseData, e
 		ID:          user.ID,
 		Name:        user.Name,
 		Email:       user.Email,
+		Balance:     user.Balance,
 		CreatedAt:   user.CreatedAt.String(),
 		UpdatedAt:   user.UpdatedAt.String(),
 		AccessToken: accessToken,
@@ -74,15 +74,9 @@ func (a *AuthService) Login(params *dto.LoginRequest) (*dto.LoginResponseData, e
 		ID:          user.ID,
 		Name:        user.Name,
 		Email:       user.Email,
+		Balance:     user.Balance,
 		CreatedAt:   user.CreatedAt.String(),
 		UpdatedAt:   user.UpdatedAt.String(),
 		AccessToken: accessToken,
 	}, nil
-}
-
-// FindByEmail implements IAuthService.
-func (a *AuthService) FindByEmail(email string) (*model.User, error) {
-	a.userRepository.FindUserByEmail(nil, email)
-
-	panic("unimplemented")
 }

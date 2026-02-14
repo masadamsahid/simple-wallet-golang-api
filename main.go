@@ -58,9 +58,14 @@ func main() {
 
 	// /api/auth
 	userRepo := repository.NewUserRepository(db.DB)
-	authService := service.NewUserService(userRepo)
+	authService := service.NewAuthService(userRepo)
 	authController := controller.NewAuthController(authService)
 	routes.SetupAuthRoutes(api, authController)
+
+	// /api/users
+	userService := service.NewUserService(userRepo)
+	userController := controller.NewUserController(userService)
+	routes.SetupUsersRoutes(api, userController)
 
 	// /api/transactions
 	transactionRepo := repository.NewTransactionRepository(db.DB)

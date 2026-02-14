@@ -12,7 +12,7 @@ type UserRepository struct {
 
 type IUserRepository interface {
 	CreateUser(db *gorm.DB, param *model.User) (*model.User, error)
-	// FindUserByID(tx *gorm.Tx, userId int) (*model.User, error)
+	FindUserByID(db *gorm.DB, userId uint) (*model.User, error)
 	FindUserByEmail(db *gorm.DB, email string) (*model.User, error)
 }
 
@@ -38,7 +38,19 @@ func (u *UserRepository) CreateUser(db *gorm.DB, param *model.User) (*model.User
 	return &user, nil
 }
 
-// func (u *UserRepository) FindUsers(tx *gorm.Tx)  {}
+func (u *UserRepository) FindUserByID(db *gorm.DB, userId uint) (*model.User, error) {
+	if db == nil {
+		db = u.db
+	}
+
+	var user model.User
+	err := db.First(&user, userId).Error
+	if err != nil {
+		return nil, err
+	}
+
+	return &user, nil
+}
 
 func (u *UserRepository) FindUserByEmail(db *gorm.DB, email string) (*model.User, error) {
 	if db == nil {
