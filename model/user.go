@@ -3,12 +3,14 @@ package model
 import "time"
 
 type User struct {
-	ID        uint      `gorm:"column:id;primary_key"`
-	Name      string    `gorm:"type:text;not null"`
-	Email     string    `gorm:"type:text;uniqueIndex;not null"`
-	Password  string    `gorm:"type:text;not null"`
-	CreatedAt time.Time `gorm:"not null"`
-	UpdatedAt time.Time `gorm:"not null"`
+	ID       uint   `gorm:"column:id;primary_key" json:"id"`
+	Name     string `gorm:"type:text;not null" json:"name"`
+	Email    string `gorm:"type:text;uniqueIndex;not null" json:"email"`
+	Password string `gorm:"type:text;not null" json:"-"`
+	Balance  int64  `gorm:"column:balance;default:0;not null" json:"balance"`
+
+	CreatedAt time.Time `gorm:"not null" json:"created_at"`
+	UpdatedAt time.Time `gorm:"not null" json:"updated_at"`
 }
 
 func (User) TableName() string {

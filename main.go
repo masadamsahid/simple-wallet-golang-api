@@ -56,10 +56,17 @@ func main() {
 
 	api := app.Group("/api")
 
+	// /api/auth
 	userRepo := repository.NewUserRepository(db.DB)
 	authService := service.NewUserService(userRepo)
 	authController := controller.NewAuthController(authService)
 	routes.SetupAuthRoutes(api, authController)
+
+	// /api/transactions
+	transactionRepo := repository.NewTransactionRepository(db.DB)
+	transactionService := service.NewTransactionService(transactionRepo, userRepo, db.DB)
+	transactionController := controller.NewTransactionController(transactionService)
+	routes.SetupTransactionsRoutes(api, transactionController)
 
 	fmt.Println("Available Routes:")
 	for _, route := range app.GetRoutes() {

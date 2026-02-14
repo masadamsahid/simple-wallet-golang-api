@@ -8,6 +8,7 @@ import (
 
 func SetupAuthRoutes(app fiber.Router, authController *controller.AuthController) {
 	authRoute := app.Group("/auth")
+
 	authRoute.Post("/register", authController.Register)
 	authRoute.Post("/login", authController.Login)
 }

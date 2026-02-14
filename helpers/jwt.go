@@ -27,19 +27,19 @@ type AuthPayload struct {
 }
 
 type AuthTokenClaims struct {
-	ID    uint
-	Name  string
-	Email string
+	ID    uint   `json:"id"`
+	Name  string `json:"name"`
+	Email string `json:"email"`
+	jwt.RegisteredClaims
 }
 
 func CreateAuthToken(claims AuthTokenClaims) (string, error) {
+	issuedAt := time.Now()
+	claims.Issuer = "mampuio-wallet-app"
+	claims.IssuedAt = jwt.NewNumericDate(issuedAt)
+	claims.ExpiresAt = jwt.NewNumericDate(issuedAt.Add(time.Hour * 24))
 	log.Println(jwtSecret)
-	tokenClaims := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
-		"id":    claims.ID,
-		"name":  claims.Name,
-		"email": claims.Email,
-		"exp":   time.Now().Add(time.Hour * 24).Unix(),
-	})
+	tokenClaims := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 	// log.Println("Token claim", tokenClaims)
 
 	authToken, err := tokenClaims.SignedString(jwtSecretArrOfByte)
@@ -52,7 +52,7 @@ func CreateAuthToken(claims AuthTokenClaims) (string, error) {
 }
 
 func VerifyAuthToken(strAuthToken string) (*jwt.Token, error) {
-	authToken, err := jwt.Parse(strAuthToken, func(t *jwt.Token) (any, error) {
+	authToken, err := jwt.ParseWithClaims(strAuthToken, &AuthTokenClaims{}, func(t *jwt.Token) (any, error) {
 		if _, ok := t.Method.(*jwt.SigningMethodHMAC); !ok {
 			return nil, fmt.Errorf("unexpected signing method: %v", t.Header["alg"])
 		}
