@@ -15,6 +15,8 @@ import (
 	"github.com/go-playground/validator/v10"
 	"github.com/gofiber/fiber/v3"
 	"github.com/joho/godotenv"
+
+	swagger "github.com/gofiber/contrib/v3/swaggerui"
 )
 
 func init() {
@@ -53,6 +55,14 @@ func main() {
 	app.Get("/", func(c fiber.Ctx) error {
 		return c.SendString("Hello, World!")
 	})
+
+	//
+	swaggerCfg := swagger.Config{
+		BasePath: "/", // swagger ui base path
+		FilePath: "./docs/openapi.yaml",
+		Path:     "/swagger",
+	}
+	app.Use(swagger.New(swaggerCfg))
 
 	api := app.Group("/api")
 
