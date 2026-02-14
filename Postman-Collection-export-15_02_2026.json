@@ -1,0 +1,215 @@
+{
+  "info": {
+    "_postman_id": "6810053b-3a65-4f4e-bec8-e94365d9617f",
+    "name": "MampuIO - Wallet API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "id": "238cfbc0-804f-450d-b140-1fe7865f4125",
+      "name": "Auth",
+      "item": [
+        {
+          "id": "a9090190-c90e-44e1-903e-b51c24ac647f",
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user2@mail.com\",\n  \"password\": \"password\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL}}/api/auth/login",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ],
+              "protocol": "https"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "59cd8737-21f6-4dc7-bcaf-f0a6b037073b",
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user2@mail.com\",\n  \"password\": \"password\",\n  \"confirm_password\": \"password\",\n  \"name\": \"User Kedua\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL}}/api/auth/register",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ],
+              "protocol": "https"
+            }
+          },
+          "response": [],
+          "event": []
+        }
+      ],
+      "variable": []
+    },
+    {
+      "id": "69d0161c-204c-4286-8d9d-3b736616a206",
+      "name": "Transactions",
+      "item": [
+        {
+          "id": "138a2727-ea4a-4654-b8f9-aa30afde94bb",
+          "name": "Deposit",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 25000\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL}}/api/transactions/deposit",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "transactions",
+                "deposit"
+              ],
+              "protocol": "https"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "47126487-3e7c-4db8-a567-5d6e7d51fc72",
+          "name": "History",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{URL}}/api/transactions/",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "transactions"
+              ],
+              "protocol": "https"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "04c7c713-243f-4aa2-a657-ce23a82b6dbc",
+          "name": "Withdraw",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 10000\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL}}/api/transactions/withdraw",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "transactions",
+                "withdraw"
+              ],
+              "protocol": "https"
+            }
+          },
+          "response": [],
+          "event": []
+        }
+      ],
+      "variable": []
+    },
+    {
+      "id": "a3237311-c273-455b-89bb-3e25cefc7f41",
+      "name": "Users",
+      "item": [
+        {
+          "id": "9701a833-0064-4af8-b763-db93d56a3e43",
+          "name": "Balance",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{URL}}/api/users/balance",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "balance"
+              ],
+              "protocol": "https"
+            }
+          },
+          "response": [],
+          "event": []
+        }
+      ],
+      "variable": []
+    }
+  ],
+  "variable": [
+    {
+      "id": "69d94b7e-01d3-45b5-aad2-a0143be3b610",
+      "key": "URL",
+      "value": "http://localhost:8080",
+      "type": "default"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IlVzZXIgS2VkdWEiLCJlbWFpbCI6InVzZXIyQG1haWwuY29tIiwiaXNzIjoibWFtcHVpby13YWxsZXQtYXBwIiwiZXhwIjoxNzcxMTg3NzkzLCJpYXQiOjE3NzExMDEzOTN9.Sz2zf9DLxoaZywudtnHdvCWzQx9YftrMF5bfYrdv85Y",
+        "type": "string"
+      }
+    ]
+  }
+}

@@ -1,0 +1,349 @@
+{
+  "schema_version": "1.0.0",
+  "records": [
+    {
+      "name": "MampuIO - Wallet API",
+      "type": "collection",
+      "data": {
+        "variables": {
+          "URL": {
+            "id": "ef8a88a0-92d1-4588-9bfb-2029e3acbe69",
+            "type": "string",
+            "syncValue": "http://localhost:8080",
+            "localValue": "",
+            "isPersisted": true,
+            "key": "URL"
+          }
+        },
+        "auth": {
+          "currentAuthType": "BEARER_TOKEN",
+          "authConfigStore": {
+            "BEARER_TOKEN": {
+              "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IlVzZXIgS2VkdWEiLCJlbWFpbCI6InVzZXIyQG1haWwuY29tIiwiaXNzIjoibWFtcHVpby13YWxsZXQtYXBwIiwiZXhwIjoxNzcxMTg3NzkzLCJpYXQiOjE3NzExMDEzOTN9.Sz2zf9DLxoaZywudtnHdvCWzQx9YftrMF5bfYrdv85Y"
+            }
+          }
+        },
+        "variablesOrder": [
+          "URL"
+        ]
+      },
+      "deleted": false,
+      "collectionId": "",
+      "id": "de6125f8-cd3e-47d6-a57d-481a4ca9e8ad",
+      "description": ""
+    },
+    {
+      "name": "Auth",
+      "type": "collection",
+      "data": {
+        "variables": {},
+        "auth": {
+          "currentAuthType": "INHERIT",
+          "authConfigStore": {}
+        },
+        "variablesOrder": []
+      },
+      "deleted": false,
+      "collectionId": "de6125f8-cd3e-47d6-a57d-481a4ca9e8ad",
+      "id": "05a48fa1-8138-48b6-bf16-77d953d0336d",
+      "description": ""
+    },
+    {
+      "name": "Login",
+      "type": "api",
+      "data": {
+        "type": "http",
+        "request": {
+          "url": "{{URL}}/api/auth/login",
+          "method": "POST",
+          "headers": [],
+          "queryParams": [],
+          "body": "{\n  \"email\": \"user2@mail.com\",\n  \"password\": \"password\"\n}",
+          "contentType": "application/json"
+        },
+        "scripts": {
+          "preRequest": "",
+          "postResponse": ""
+        },
+        "auth": {
+          "currentAuthType": "INHERIT",
+          "authConfigStore": {}
+        },
+        "response": {
+          "body": "{\"message\":\"Login successful\",\"data\":{\"id\":1,\"name\":\"User Pertama\",\"email\":\"user1@mail.com\",\"balance\":0,\"created_at\":\"2026-02-15 03:33:34.252328 +0000 UTC\",\"updated_at\":\"2026-02-15 03:33:34.252328 +0000 UTC\",\"access_token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IlVzZXIgUGVydGFtYSIsImVtYWlsIjoidXNlcjFAbWFpbC5jb20iLCJpc3MiOiJtYW1wdWlvLXdhbGxldC1hcHAiLCJleHAiOjE3NzExODc2MjUsImlhdCI6MTc3MTEwMTIyNX0.5uGFka8QM6tiYZHz4UtsDyfap2LolrTFpvY30jll7h0\"}}",
+          "time": 162.60418800078332,
+          "headers": [
+            {
+              "key": "date",
+              "value": "Sat, 14 Feb 2026 20:33:45 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "content-length",
+              "value": "463"
+            },
+            {
+              "key": "connection",
+              "value": "close"
+            }
+          ],
+          "status": 200,
+          "statusText": "OK",
+          "redirectedUrl": ""
+        },
+        "testResults": []
+      },
+      "deleted": false,
+      "collectionId": "05a48fa1-8138-48b6-bf16-77d953d0336d",
+      "description": "",
+      "id": "fe39a7ca-e359-4f09-92df-2d17cb15dbc1"
+    },
+    {
+      "name": "Register",
+      "type": "api",
+      "data": {
+        "type": "http",
+        "request": {
+          "url": "{{URL}}/api/auth/register",
+          "method": "POST",
+          "headers": [],
+          "queryParams": [],
+          "body": "{\n  \"email\": \"user2@mail.com\",\n  \"password\": \"password\",\n  \"confirm_password\": \"password\",\n  \"name\": \"User Kedua\"\n}",
+          "contentType": "application/json"
+        },
+        "scripts": {
+          "preRequest": "",
+          "postResponse": ""
+        },
+        "auth": {
+          "currentAuthType": "INHERIT",
+          "authConfigStore": {}
+        },
+        "response": {
+          "body": "{\"message\":\"Registration successful\",\"data\":{\"id\":1,\"name\":\"User Pertama\",\"email\":\"user1@mail.com\",\"balance\":0,\"created_at\":\"2026-02-15 03:33:34.252328331 +0700 WIB\",\"updated_at\":\"2026-02-15 03:33:34.252328331 +0700 WIB\",\"access_token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IlVzZXIgUGVydGFtYSIsImVtYWlsIjoidXNlcjFAbWFpbC5jb20iLCJpc3MiOiJtYW1wdWlvLXdhbGxldC1hcHAiLCJleHAiOjE3NzExODc2MTQsImlhdCI6MTc3MTEwMTIxNH0.7znpnkvr9RPzM6Luzxec5oW0jXHdBoZpc5oGcxR2wVg\"}}",
+          "time": 147.44708199985325,
+          "headers": [
+            {
+              "key": "date",
+              "value": "Sat, 14 Feb 2026 20:33:33 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "content-length",
+              "value": "476"
+            },
+            {
+              "key": "connection",
+              "value": "close"
+            }
+          ],
+          "status": 200,
+          "statusText": "OK",
+          "redirectedUrl": ""
+        },
+        "testResults": []
+      },
+      "deleted": false,
+      "collectionId": "05a48fa1-8138-48b6-bf16-77d953d0336d",
+      "id": "813cb419-af9f-4005-b976-645c954a58ff",
+      "description": ""
+    },
+    {
+      "name": "Transactions",
+      "type": "collection",
+      "data": {
+        "variables": {},
+        "auth": {
+          "currentAuthType": "INHERIT",
+          "authConfigStore": {}
+        },
+        "variablesOrder": []
+      },
+      "deleted": false,
+      "collectionId": "de6125f8-cd3e-47d6-a57d-481a4ca9e8ad",
+      "id": "22aa98c7-975c-47cc-8f7c-0b449837b979",
+      "description": ""
+    },
+    {
+      "name": "Deposit",
+      "type": "api",
+      "data": {
+        "type": "http",
+        "request": {
+          "url": "{{URL}}/api/transactions/deposit",
+          "method": "POST",
+          "headers": [],
+          "queryParams": [],
+          "body": "{\n  \"amount\": 25000\n}",
+          "contentType": "application/json"
+        },
+        "scripts": {
+          "preRequest": "",
+          "postResponse": ""
+        },
+        "auth": {
+          "currentAuthType": "INHERIT",
+          "authConfigStore": {}
+        },
+        "response": {
+          "body": "{\"message\":\"Deposit successful\",\"data\":{\"id\":19,\"user_id\":10,\"amount\":100000,\"transaction_type\":\"deposit\",\"description\":\"Top Up Balance IDR 100000 by User Sembilan (uid: 10)\",\"created_at\":\"2026-02-15T03:31:30.468195Z\",\"updated_at\":\"2026-02-15T03:31:30.468195Z\",\"user\":{\"id\":10,\"name\":\"User Sembilan\",\"email\":\"user9@mail.com\",\"balance\":100000,\"created_at\":\"2026-02-15T03:30:36.733452+07:00\",\"updated_at\":\"2026-02-15T03:31:30.466003+07:00\"}}}",
+          "time": 22.95179800130427,
+          "headers": [
+            {
+              "key": "date",
+              "value": "Sat, 14 Feb 2026 20:31:29 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "content-length",
+              "value": "440"
+            },
+            {
+              "key": "connection",
+              "value": "close"
+            }
+          ],
+          "status": 200,
+          "statusText": "OK",
+          "redirectedUrl": ""
+        },
+        "testResults": []
+      },
+      "deleted": false,
+      "collectionId": "22aa98c7-975c-47cc-8f7c-0b449837b979",
+      "description": "",
+      "id": "38cb810b-5570-4c36-8b52-ef6043c7e58d"
+    },
+    {
+      "name": "History",
+      "type": "api",
+      "data": {
+        "type": "http",
+        "request": {
+          "url": "{{URL}}/api/transactions/",
+          "method": "GET",
+          "headers": [],
+          "queryParams": [],
+          "contentType": "text/plain"
+        },
+        "scripts": {
+          "preRequest": "",
+          "postResponse": ""
+        },
+        "auth": {
+          "currentAuthType": "INHERIT",
+          "authConfigStore": {}
+        },
+        "response": null
+      },
+      "deleted": false,
+      "collectionId": "22aa98c7-975c-47cc-8f7c-0b449837b979",
+      "description": "",
+      "id": "8fa64c19-f278-405b-a84d-c34352b8f2c4"
+    },
+    {
+      "name": "Withdraw",
+      "type": "api",
+      "data": {
+        "type": "http",
+        "request": {
+          "url": "{{URL}}/api/transactions/withdraw",
+          "method": "POST",
+          "headers": [],
+          "queryParams": [],
+          "body": "{\n  \"amount\": 10000\n}",
+          "contentType": "application/json"
+        },
+        "scripts": {
+          "preRequest": "",
+          "postResponse": ""
+        },
+        "auth": {
+          "currentAuthType": "INHERIT",
+          "authConfigStore": {}
+        },
+        "response": {
+          "body": "{\"message\":\"insufficient balance\"}",
+          "time": 9.509746000170708,
+          "headers": [
+            {
+              "key": "date",
+              "value": "Sat, 14 Feb 2026 20:37:13 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "content-length",
+              "value": "34"
+            },
+            {
+              "key": "connection",
+              "value": "close"
+            }
+          ],
+          "status": 500,
+          "statusText": "Internal Server Error",
+          "redirectedUrl": ""
+        },
+        "testResults": []
+      },
+      "deleted": false,
+      "collectionId": "22aa98c7-975c-47cc-8f7c-0b449837b979",
+      "description": "",
+      "id": "400e2e4c-f40a-49d1-b3dd-f0283cdf1a4f"
+    },
+    {
+      "name": "Users",
+      "type": "collection",
+      "data": {
+        "variables": {},
+        "auth": {
+          "currentAuthType": "INHERIT",
+          "authConfigStore": {}
+        }
+      },
+      "deleted": false,
+      "collectionId": "de6125f8-cd3e-47d6-a57d-481a4ca9e8ad",
+      "id": "5a109445-f6eb-47f1-9166-844b5f493024",
+      "description": ""
+    },
+    {
+      "name": "Balance",
+      "type": "api",
+      "data": {
+        "type": "http",
+        "request": {
+          "url": "{{URL}}/api/users/balance",
+          "method": "GET",
+          "headers": [],
+          "queryParams": [],
+          "contentType": "text/plain"
+        },
+        "scripts": {
+          "preRequest": "",
+          "postResponse": ""
+        },
+        "auth": {
+          "currentAuthType": "INHERIT",
+          "authConfigStore": {}
+        },
+        "response": null
+      },
+      "deleted": false,
+      "collectionId": "5a109445-f6eb-47f1-9166-844b5f493024",
+      "description": "",
+      "id": "ee102291-3d4c-439b-a423-8a1e834f32d9"
+    }
+  ]
+}

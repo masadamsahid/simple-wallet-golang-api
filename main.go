@@ -57,6 +57,17 @@ func main() {
 		return c.SendString("Hello, World!")
 	})
 
+	// Raw OpenAPI YAML file
+	openapiYAMLDocs, err := os.ReadFile("./docs/openapi.yaml")
+	if err != nil {
+		log.Println("Error loading OpenAPI .yaml file:", err)
+	}
+	openapiStr := string(openapiYAMLDocs)
+	app.Get("/openapi", func(c fiber.Ctx) error {
+		c.Set(fiber.HeaderContentType, "text/openapi+yaml; charset=utf-8")
+		return c.SendString(string(openapiStr))
+	})
+
 	// Swagger
 	swaggerCfg := swagger.Config{
 		BasePath: "/", // swagger ui base path

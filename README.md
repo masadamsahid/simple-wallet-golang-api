@@ -2,6 +2,19 @@
 
 A Go-based wallet application built with the Fiber web framework. This project manages users, authentication, and financial transactions (deposits, withdrawals).
 
+## Want to Test It Online? Visit:
+
+- [Scalar Docs](masadamsahid-simple-wallet-golang-api.leapcell.app/scalar)
+- [Swagger UI](masadamsahid-simple-wallet-golang-api.leapcell.app/swagger)
+- [OpenAPI](masadamsahid-simple-wallet-golang-api.leapcell.app/openapi)
+
+
+## Or Test It Locally? Import:
+
+- Requestly Collection [RQ-Collection-export-15_02_2026.json](RQ-Collection-export-15_02_2026.json)
+- Postman collection [Postman-Collection-export-15_02_2026.json](Postman-Collection-export-15_02_2026.json) (v2.1 format)
+
+
 ## Project Overview
 
 *   **Type:** Go Web Application (REST API)
@@ -9,9 +22,15 @@ A Go-based wallet application built with the Fiber web framework. This project m
 *   **Database:** PostgreSQL (with [GORM](https://gorm.io/))
 *   **Authentication:** JWT (JSON Web Tokens)
 *   **Architecture:** Layered Architecture (Controller -> Service -> Repository)
+*   **Migrations:** [golang-migrate](https://github.com/golang-migrate/migrate)
+*   **API Docs:** OpenAPI v3, Scalar, & Swagger 
 
 ## Key Features
 
+*   **Documentations**
+    *   OpenAPI Spec (`/openapi`)
+    *   Swagger UI (`/swagger`)
+    *   Scalar Documentation (`/scalar`)
 *   **User Management:**
     *   Registration (`POST /api/auth/register`)
     *   Login (`POST /api/auth/login`)
