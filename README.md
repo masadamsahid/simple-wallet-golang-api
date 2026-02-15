@@ -4,9 +4,9 @@ A Go-based wallet application built with the Fiber web framework. This project m
 
 ## Want to Test It Online? Visit:
 
-- [Scalar Docs](masadamsahid-simple-wallet-golang-api.leapcell.app/scalar)
-- [Swagger UI](masadamsahid-simple-wallet-golang-api.leapcell.app/swagger)
-- [OpenAPI](masadamsahid-simple-wallet-golang-api.leapcell.app/openapi)
+- [Scalar Docs](https://masadamsahid-simple-wallet-golang-api.leapcell.app/scalar)
+- [Swagger UI](https://masadamsahid-simple-wallet-golang-api.leapcell.app/swagger)
+- [OpenAPI](https://masadamsahid-simple-wallet-golang-api.leapcell.app/openapi)
 
 
 ## Or Test It Locally? Import:
